@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;   // Create a new schema
 const userDataSchema = new Schema({
-  
+  username: {
+    type: String,
+    required: true, 
+    unique: true
+  },
+
   email: {
     type: String,
     required: true, 
@@ -12,7 +17,20 @@ const userDataSchema = new Schema({
   password: {
     type: String,
     required: true, 
-  }
+  },
+
+  cpassword: {
+    type: String,
+    required: true, 
+    unique: true
+  },
+
+  contact : {
+    type: String,
+    required: true, 
+    unique: true
+  },
+
 
 });
 
