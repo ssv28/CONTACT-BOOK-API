@@ -10,8 +10,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/demo')
   .then(() => console.log('Connected!'))
   .catch((err) => console.log(err.message))
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
+var userRouter = require('./routes/user');
+var contactRouter = require('./routes/contact');
 
 var app = express();
 
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/contact",contactRouter)
+app.use("/user",userRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
