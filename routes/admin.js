@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('admin', { title: 'Express' });
+  res.render('admin', { title: 'Admin' });
 });
 
 
