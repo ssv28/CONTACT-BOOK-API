@@ -133,12 +133,12 @@ router.patch('/admin/update/:id', async function (req, res, next) {
   try {
 
     req.body.password = await bcrypt.hash(req.body.password, 10)
-    let userUpdate = await Admin.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    let userUpdate = await Admin.findByIdAndUpdate(req.params.id, req.body, { new: true })
 
     res.status(200).json({
       status: "Success",
       message: "Admin Update SuccessFully!",
-      data : userUpdate
+      data: userUpdate
     })
 
   } catch (error) {
@@ -184,6 +184,7 @@ router.post('/user/login', async function (req, res, next) {
 
     let userFind = await User.findOne({ email: req.body.email })
     if (!userFind) throw new Error("User Not Found!")
+      
     let passwordCompare = await bcrypt.compare(req.body.password, userFind.password)
     if (!passwordCompare) throw new Error("Password Invalid!")
 
@@ -274,13 +275,19 @@ router.delete('/user/delete/:id', async function (req, res, next) {
 router.patch('/user/update/:id', async function (req, res, next) {
   try {
 
+    console.log("===>>>", req.body);
+
     req.body.password = await bcrypt.hash(req.body.password, 10)
-    let userUpdate = await User.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    let updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    console.log(req.params.id);
+    console.log("~~~~~~>>>>",req.body);
+
+    console.log(">>>>>", updatedUser);
 
     res.status(200).json({
       status: "Success",
       message: "User Update SuccessFully!",
-      data : userUpdate
+      data: updatedUser
     })
 
   } catch (error) {
@@ -388,12 +395,16 @@ router.delete('/contact/delete/:id', async function (req, res, next) {
 router.patch('/contact/update/:id', async function (req, res, next) {
   try {
 
-    let userUpdate = await Contact.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    console.log(req.body);
+
+    let userUpdate = await Contact.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+    console.log(userUpdate);
 
     res.status(200).json({
       status: "Success",
       message: "Contact Update SuccessFully!",
-      data : userUpdate
+      data: userUpdate
     })
 
   } catch (error) {
@@ -403,5 +414,7 @@ router.patch('/contact/update/:id', async function (req, res, next) {
     })
   }
 });
+
+
 
 module.exports = router;
