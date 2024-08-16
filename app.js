@@ -11,7 +11,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/demo')
   .catch((err) => console.log(err.message))
 
 var indexRouter = require('./routes/admin');
-var usersRouter = require('./routes/users');
 var userRouter = require('./routes/user');
 var contactRouter = require('./routes/contact');
 
@@ -28,7 +27,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use("/contact",contactRouter)
 app.use("/user",userRouter)
 
