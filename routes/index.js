@@ -184,7 +184,7 @@ router.post('/user/login', async function (req, res, next) {
 
     let userFind = await User.findOne({ email: req.body.email })
     if (!userFind) throw new Error("User Not Found!")
-      
+
     let passwordCompare = await bcrypt.compare(req.body.password, userFind.password)
     if (!passwordCompare) throw new Error("Password Invalid!")
 
@@ -279,6 +279,7 @@ router.patch('/user/update/:id', async function (req, res, next) {
 
     req.body.password = await bcrypt.hash(req.body.password, 10)
     let updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    
     console.log(req.params.id);
     console.log("~~~~~~>>>>",req.body);
 
