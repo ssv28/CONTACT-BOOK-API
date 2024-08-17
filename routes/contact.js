@@ -28,5 +28,4 @@ router.delete('/delete/:id', ContactController.ContactDelete);
 router.patch('/update/:id', ContactController.ContactUpdate);
 
 
-
 module.exports = router;
