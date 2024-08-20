@@ -24,7 +24,7 @@ exports.ContactCreate = async function (req, res, next) {
 exports.FindData = async function (req, res, next) {
     try {
 
-        let userFind = await Contact.find()
+        let userFind = await Contact.find().populate("userId")
 
         res.status(200).json({
             status: "Success",
