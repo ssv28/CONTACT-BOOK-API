@@ -31,6 +31,11 @@ const userDataSchema = new Schema({
     unique: true
   },
 
+  profileImage : {
+    type : String,
+    required : true
+  }
+
 
 });
 

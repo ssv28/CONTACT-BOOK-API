@@ -2,8 +2,11 @@ let User = require('../model/user');
 const bcrypt = require('bcrypt');
 
 exports.UserSignup =  async function (req, res, next) {
+
+  req.feild.profileImage == file.originalname            //Multer
+
     try {
-  
+
       req.body.password = await bcrypt.hash(req.body.password, 10)
       let userCreate = await User.create(req.body)
   
