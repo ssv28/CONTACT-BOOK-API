@@ -22,13 +22,11 @@ const userDataSchema = new Schema({
   cpassword: {
     type: String,
     required: true, 
-    unique: true
   },
 
   contact : {
     type: String,
     required: true, 
-    unique: true
   },
 
   profileImage : {
