@@ -24,7 +24,13 @@ router.get('/', function (req, res, next) {
 
 
 //SIGN UP
-router.post('/signup', upload.single("profileImage") ,UserController.UserSignup);
+// router.post('/signup', upload.single("profileImage") ,UserController.UserSignup);         //Multer single
+// router.post('/signup', upload.array("profileImage",10) ,UserController.UserSignup);       //Multer Array
+
+router.post('/signup', upload.fields([
+  { name: 'profileImage', maxCount: 1 },
+  { name: 'post', maxCount: 8 }
+]) ,UserController.UserSignup);          //Multer Feilds
 
 
 //LOG IN

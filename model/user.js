@@ -29,11 +29,16 @@ const userDataSchema = new Schema({
     required: true, 
   },
 
-  profileImage : {
+  profileImage : [{       //multi []   //single {}
+    type : String,
+    required : true
+  }],
+
+  post : {
     type : String,
     required : true
   }
-
+  
 
 });
 

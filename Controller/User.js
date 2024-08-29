@@ -2,12 +2,23 @@ let User = require('../model/user');
 const bcrypt = require('bcrypt');
 
 exports.UserSignup = async function (req, res, next) {
-
-  console.log(req.file);
-
-  req.body.profileImage = req.file.originalname            //Multer single
-  
   try {
+
+    //::::::::MULTER::::::===========================================================================================
+
+    // console.log(req.file);  //single Multer
+
+    console.log(req.files);
+
+    // req.body.profileImage = req.file.originalname            //Multer single
+
+    // req.body.profileImage = req.files.map((el) => el.filename)           //Multer Array
+
+    req.body.profileImage = req.files.profileImage[0].filename             //MULTER Fields
+    req.body.post = req.files.post.map(el => el.filename)
+
+    //=======================================================================================================================
+
 
     req.body.password = await bcrypt.hash(req.body.password, 10)
     let userCreate = await User.create(req.body)
