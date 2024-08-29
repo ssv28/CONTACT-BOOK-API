@@ -8,7 +8,7 @@ exports.UserSignup = async function (req, res, next) {
 
     // console.log(req.file);  //single Multer
 
-    console.log(req.files);
+    console.log(req.files);     //fields and array multer
 
     // req.body.profileImage = req.file.originalname            //Multer single
 

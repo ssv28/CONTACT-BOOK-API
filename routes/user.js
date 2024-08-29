@@ -24,6 +24,7 @@ router.get('/', function (req, res, next) {
 
 
 //SIGN UP
+
 // router.post('/signup', upload.single("profileImage") ,UserController.UserSignup);         //Multer single
 // router.post('/signup', upload.array("profileImage",10) ,UserController.UserSignup);       //Multer Array
 
