@@ -5,16 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mongoose = require('mongoose');
-
 mongoose.connect('mongodb://127.0.0.1:27017/demo')
-  .then(() => console.log('Connected!'))
-  .catch((err) => console.log(err.message))
+.then(() => console.log('Connected!'))
+.catch((err) => console.log(err.message))
 
 var indexRouter = require('./routes/admin');
 var userRouter = require('./routes/user');
 var contactRouter = require('./routes/contact');
 
 var app = express();
+// require('dotenv').config()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
