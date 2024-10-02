@@ -47,7 +47,7 @@ exports.UserLogin = async function (req, res, next) {
     let passwordCompare = await bcrypt.compare(req.body.password, userFind.password)
     if (!passwordCompare) throw new Error("Password Invalid!")
 
-
+  
     res.status(200).json({
       status: "Success",
       message: "User Login SuccessFully!",
